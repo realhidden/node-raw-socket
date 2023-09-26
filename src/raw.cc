@@ -638,7 +638,7 @@ Napi::Value SocketWrap::Recv(const Napi::CallbackInfo& info) {
 	  This code converts this information
 	*/
 	if (socket->family_ != AF_INET6) {
-		char *message = (char *)node::Buffer::Data(buffer);
+		char *message = (char *)buffer.Data();
 		int header_len = (message[0] & 0x0F) << 2;
 		long packet_len = message[3] << 8 | message[2] + header_len;
 
